@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3307
--- Время создания: Ноя 20 2024 г., 12:45
+-- Хост: 10.111.20.114:3306
+-- Время создания: Янв 12 2026 г., 10:42
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -32,7 +32,14 @@ CREATE TABLE `comments` (
   `IdUser` int NOT NULL COMMENT 'Код пользователя',
   `IdPost` int NOT NULL COMMENT 'Код поста',
   `Messages` varchar(1000) NOT NULL COMMENT 'Сообщение'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`Id`, `IdUser`, `IdPost`, `Messages`) VALUES
+(22, 29, 1, 'asd');
 
 -- --------------------------------------------------------
 
@@ -69,6 +76,7 @@ CREATE TABLE `users` (
   `id` int NOT NULL,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `img` varchar(100) NOT NULL,
   `roll` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -76,9 +84,9 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `roll`) VALUES
-(1, 'admin', 'Asdfg123', 1),
-(8, 'user', 'Asdfg123', 0);
+INSERT INTO `users` (`id`, `login`, `password`, `img`, `roll`) VALUES
+(1, 'admin', 'Asdfg123', '', 1),
+(8, 'user', 'Asdfg123', '', 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -110,7 +118,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Id` int NOT NULL AUTO_INCREMENT COMMENT 'Код', AUTO_INCREMENT=17;
+  MODIFY `Id` int NOT NULL AUTO_INCREMENT COMMENT 'Код', AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT для таблицы `news`
@@ -122,7 +130,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
